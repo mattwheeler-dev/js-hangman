@@ -68,23 +68,31 @@ const setSolution = async () => {
 
 setSolution();
 
-const checkLetter = (e) => {
+const handleTurn = (e) => {
 	const targetLetter = e.target.textContent;
-	for (let i = 0; i < solution.length; i++) {
-		if (solution[i] == targetLetter) {
-			document.querySelector(`.${targetLetter}`).textContent = targetLetter;
-			score += 1;
-			return;
+	solution.forEach((letter) => {
+		if (letter == targetLetter) {
+			const revealed = document.querySelectorAll(`.${targetLetter}`);
+			revealed.forEach((slot) => {
+				slot.textContent = targetLetter;
+				score += 1;
+			});
+			if (score == solution.length) {
+				gameOver("win");
+			}
 		}
-	}
+	});
 	fails += 1;
+	if (fails == 7) {
+		gameOver("lose");
+	}
 };
 
 // Add keys for keyboard
 letters.forEach((letter) => {
 	const key = document.createElement("div");
 	keyboard.appendChild(key);
-	key.addEventListener("click", checkLetter);
+	key.addEventListener("click", handleTurn);
 	key.classList.add("key");
 	key.textContent = letter;
 });
