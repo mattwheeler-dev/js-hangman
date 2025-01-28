@@ -5,13 +5,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="styles.css" />
 		<script src="scripts.js" defer></script>
+		<!-- font awesome -->
+		<script
+			src="https://kit.fontawesome.com/1e723eb9a7.js"
+			crossorigin="anonymous"
+			defer
+		></script>
 		<title>Hangman</title>
 	</head>
 	<body>
 		<h1>Hangman</h1>
 
+		<button id="rules-btn">Rules</button>
+
 		<article id="rules">
 			<h3>Rules</h3>
+			<button id="rules-close">X</button>
 			<ul>
 				<li>Each turn you choose a letter (tap / click or use keyboard)</li>
 				<li>If that letter exists in the mystery word, it will be shown</li>
@@ -21,7 +30,7 @@
 				</li>
 				<li>
 					If all body parts are added then you are officially hanged (anyone
-					else hate hearing it said this way?)
+					else hate seeing or hearing it this way?)
 				</li>
 				<li>Tip: There are 7 body parts, so 7 fails and you lose...</li>
 			</ul>

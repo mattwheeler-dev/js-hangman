@@ -11,3 +11,31 @@ body {
 	background-color: #202020;
 	overflow: clip;
 }
+
+h1,
+h3 {
+	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+}
+
+#rules-btn {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+}
+
+#rules {
+	width: 80%;
+	display: none;
+	position: absolute;
+	top: 20%;
+	left: 10%;
+}
+
+/* toggle rules open / closed */
+#rules.active {
+	display: block;
+}

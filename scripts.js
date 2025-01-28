@@ -1,6 +1,9 @@
 // DOM variables
+const rulesBtn = document.querySelector("#rules-btn");
+const rules = document.querySelector("#rules");
 const keyboard = document.querySelector("#keyboard");
 
+// global variables
 const letters = [
 	"a",
 	"b",
@@ -30,9 +33,16 @@ const letters = [
 	"z",
 ];
 
+const toggleRules = () => {
+	rules.classList.toggle("active");
+};
+
+rulesBtn.addEventListener("click", toggleRules);
+
 // Add keys for keyboard
 letters.forEach((letter) => {
 	const key = document.createElement("div");
 	keyboard.appendChild(key);
+	key.classList.add("key");
 	key.textContent = letter;
 });
