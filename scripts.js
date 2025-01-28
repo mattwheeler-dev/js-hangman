@@ -1,9 +1,12 @@
 // DOM variables
-const rulesBtn = document.querySelector("#rules-btn");
+const rulesOpen = document.querySelector("#rules-btn");
+const rulesClose = document.querySelector("#rules-close");
 const rules = document.querySelector("#rules");
+const mystery = document.querySelector("#mystery-word");
 const keyboard = document.querySelector("#keyboard");
 
-// global variables
+// Global variables
+const apiURL = `https://random-word-api.vercel.app/api?words=1`;
 const letters = [
 	"a",
 	"b",
@@ -32,12 +35,34 @@ const letters = [
 	"y",
 	"z",
 ];
+let solution = [];
 
 const toggleRules = () => {
 	rules.classList.toggle("active");
 };
 
-rulesBtn.addEventListener("click", toggleRules);
+rulesOpen.addEventListener("click", toggleRules);
+rulesClose.addEventListener("click", toggleRules);
+
+// fetch and set solution word
+const setSolution = async () => {
+	try {
+		const response = await fetch(apiURL);
+		const data = await response.json();
+		solution = data[0].split("");
+		console.log(solution);
+		solution.forEach((letter) => {
+			const mysteryLetter = document.createElement("div");
+			mystery.appendChild(mysteryLetter);
+			mysteryLetter.classList.add(`letter`);
+			mysteryLetter.textContent = "";
+		});
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+setSolution();
 
 // Add keys for keyboard
 letters.forEach((letter) => {

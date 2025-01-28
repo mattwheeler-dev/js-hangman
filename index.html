@@ -11,6 +11,7 @@
 			crossorigin="anonymous"
 			defer
 		></script>
+		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 		<title>Hangman</title>
 	</head>
 	<body>
@@ -20,7 +21,9 @@
 
 		<article id="rules">
 			<h3>Rules</h3>
-			<button id="rules-close">X</button>
+			<button id="rules-close">
+				<i class="fa-regular fa-circle-xmark"></i>
+			</button>
 			<ul>
 				<li>Each turn you choose a letter (tap / click or use keyboard)</li>
 				<li>If that letter exists in the mystery word, it will be shown</li>
@@ -36,7 +39,7 @@
 			</ul>
 		</article>
 
-		<section>
+		<section id="hang-reveal">
 			<div>piece 1</div>
 			<div>piece 2</div>
 			<div>piece 3</div>
@@ -45,6 +48,8 @@
 			<div>piece 6</div>
 			<div>piece 7</div>
 		</section>
+
+		<section id="mystery-word"></section>
 
 		<section id="keyboard"></section>
 	</body>
