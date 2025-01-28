@@ -5,6 +5,8 @@ const rules = document.querySelector("#rules");
 const hangPieces = document.querySelectorAll(".piece");
 const mystery = document.querySelector("#mystery-word");
 const keyboard = document.querySelector("#keyboard");
+const winner = document.querySelector("#winner");
+const loser = document.querySelector("#loser");
 
 // Global variables
 const apiURL = `https://random-word-api.vercel.app/api?words=1`;
@@ -65,32 +67,43 @@ const setSolution = async () => {
 		console.error(error);
 	}
 };
-
 setSolution();
 
-const handleTurn = (e) => {
-	const targetLetter = e.target.textContent;
-	solution.forEach((letter) => {
-		if (letter == targetLetter) {
-			const revealed = document.querySelectorAll(`.${targetLetter}`);
-			revealed.forEach((slot) => {
-				slot.textContent = targetLetter;
-				score += 1;
-			});
-			if (score == solution.length) {
-				gameOver("win");
-			}
-		}
-	});
-	fails += 1;
-	if (fails == 7) {
-		gameOver("lose");
+// game over
+const gameOver = (str) => {
+	if (str == "win") {
+		winner.classList.add("active");
+	} else {
+		loser.classList.add("active");
 	}
 };
 
-// Add keys for keyboard
+// turn handling
+const handleTurn = (e) => {
+	const targetLetter = e.target.textContent;
+	if (solution.includes(targetLetter)) {
+		e.target.disabled = true;
+		const revealed = document.querySelectorAll(`.${targetLetter}`);
+		revealed.forEach((slot) => {
+			slot.textContent = targetLetter;
+			score += 1;
+		});
+		if (score == solution.length) {
+			gameOver("win");
+		}
+	} else {
+		fails += 1;
+		e.target.classList.add("failed");
+		if (fails == 7) {
+			gameOver("lose");
+		}
+	}
+	console.log(`Score: ${score} | Fails: ${fails}`);
+};
+
+// Add on screen keyboard
 letters.forEach((letter) => {
-	const key = document.createElement("div");
+	const key = document.createElement("button");
 	keyboard.appendChild(key);
 	key.addEventListener("click", handleTurn);
 	key.classList.add("key");

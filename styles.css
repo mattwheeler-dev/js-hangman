@@ -16,13 +16,17 @@ body {
 	overflow: clip;
 }
 
+/* headings */
 h1,
 h3 {
 	text-align: center;
 }
 
-ul {
-	list-style-type: none;
+/* toggle display of rules, winner, and loser */
+#rules.active,
+#winner.active,
+#loser.active {
+	display: block;
 }
 
 #rules-btn {
@@ -40,12 +44,10 @@ ul {
 	left: 10%;
 }
 
-/* toggle rules open / closed */
-#rules.active {
-	display: block;
+ul {
+	list-style-type: none;
 }
 
-/* hanged person area */
 #hang-reveal {
 	min-height: 5rem;
 	width: 70%;
@@ -61,7 +63,6 @@ ul {
 	display: block;
 }
 
-/* mystery word area */
 #mystery-word {
 	min-height: 3rem;
 	width: 80%;
@@ -79,7 +80,6 @@ ul {
 	border-bottom: 1px solid white;
 }
 
-/* on screen keyboard */
 #keyboard {
 	text-align: center;
 	display: flex;
@@ -96,7 +96,13 @@ ul {
 }
 
 .key.found {
+	cursor: not-allowed;
 }
 
 .key.failed {
+}
+
+#winner,
+#loser {
+	display: none;
 }
