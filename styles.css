@@ -32,8 +32,9 @@ ul {
 }
 
 #rules {
-	width: 80%;
 	display: none;
+	width: 80%;
+	background-color: #101010;
 	position: absolute;
 	top: 20%;
 	left: 10%;
@@ -44,9 +45,23 @@ ul {
 	display: block;
 }
 
+/* hanged person area */
 #hang-reveal {
+	min-height: 5rem;
+	width: 70%;
+	margin: auto;
+	border: 1px solid red;
 }
 
+.piece {
+	display: none;
+}
+
+.piece.revealed {
+	display: block;
+}
+
+/* mystery word area */
 #mystery-word {
 	min-height: 3rem;
 	width: 80%;
@@ -64,9 +79,7 @@ ul {
 	border-bottom: 1px solid white;
 }
 
-.mystery-letter.revealed {
-}
-
+/* on screen keyboard */
 #keyboard {
 	text-align: center;
 	display: flex;

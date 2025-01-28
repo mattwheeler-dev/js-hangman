@@ -2,6 +2,7 @@
 const rulesOpen = document.querySelector("#rules-btn");
 const rulesClose = document.querySelector("#rules-close");
 const rules = document.querySelector("#rules");
+const hangPieces = document.querySelectorAll(".piece");
 const mystery = document.querySelector("#mystery-word");
 const keyboard = document.querySelector("#keyboard");
 
@@ -36,7 +37,10 @@ const letters = [
 	"z",
 ];
 let solution = [];
+let score = 0;
+let fails = 0;
 
+// toggle rules open / closed
 const toggleRules = () => {
 	rules.classList.toggle("active");
 };
@@ -54,8 +58,8 @@ const setSolution = async () => {
 		solution.forEach((letter) => {
 			const mysteryLetter = document.createElement("div");
 			mystery.appendChild(mysteryLetter);
-			mysteryLetter.classList.add(`letter`);
-			mysteryLetter.textContent = "";
+			mysteryLetter.classList.add("letter", `${letter}`);
+			mysteryLetter.textContent = "-";
 		});
 	} catch (error) {
 		console.error(error);
@@ -64,10 +68,23 @@ const setSolution = async () => {
 
 setSolution();
 
+const checkLetter = (e) => {
+	const targetLetter = e.target.textContent;
+	for (let i = 0; i < solution.length; i++) {
+		if (solution[i] == targetLetter) {
+			document.querySelector(`.${targetLetter}`).textContent = targetLetter;
+			score += 1;
+			return;
+		}
+	}
+	fails += 1;
+};
+
 // Add keys for keyboard
 letters.forEach((letter) => {
 	const key = document.createElement("div");
 	keyboard.appendChild(key);
+	key.addEventListener("click", checkLetter);
 	key.classList.add("key");
 	key.textContent = letter;
 });
