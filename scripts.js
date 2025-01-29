@@ -58,7 +58,6 @@ const setSolution = async () => {
 		const response = await fetch(apiURL);
 		const data = await response.json();
 		solution = data[0].split("");
-		console.log(solution);
 		solution.forEach((letter) => {
 			const mysteryLetter = document.createElement("div");
 			mystery.appendChild(mysteryLetter);
@@ -74,14 +73,15 @@ setSolution();
 // game over
 const gameOver = (str) => {
 	const gameStats = document.createElement("h3");
+	const answer = solution.join("");
 	if (str == "win") {
 		winner.classList.add("active");
 		winner.appendChild(gameStats);
-		gameStats.textContent = `You guessed it in just ${turns} turns!`;
+		gameStats.textContent = `You guessed ${answer} in just ${turns} turns!`;
 	} else {
 		loser.classList.add("active");
 		loser.appendChild(gameStats);
-		gameStats.textContent = `The word was ${solution.join("")}...`;
+		gameStats.textContent = `The word was ${answer}...`;
 	}
 	mystery.classList.add("game-over");
 	keyboard.classList.add("game-over");
@@ -110,7 +110,6 @@ const handleTurn = (key) => {
 			gameOver("lose");
 		}
 	}
-	console.log(`Score: ${score} | Fails: ${fails} | Turns ${turns}`);
 };
 
 // Add on screen keyboard
