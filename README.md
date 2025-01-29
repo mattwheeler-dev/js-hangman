@@ -11,4 +11,4 @@ Rules
 
 Key presses and on screen keys will be disabled after each guess.
 
-Mystery word found on each page load using <a href="https://random-word-api.vercel.app/" target="_blank"> random word api</a>.
+The mystery word is found on each page load using <a href="https://random-word-api.vercel.app/" target="_blank"> random word api</a>.

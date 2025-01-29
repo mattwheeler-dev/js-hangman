@@ -77,11 +77,11 @@ const gameOver = (str) => {
 	if (str == "win") {
 		winner.classList.add("active");
 		winner.appendChild(gameStats);
-		gameStats.textContent = `You guessed ${answer} in just ${turns} turns!`;
+		gameStats.innerHTML = `You guessed <span class="answer correct">${answer}</span> in just ${turns} turns!`;
 	} else {
 		loser.classList.add("active");
 		loser.appendChild(gameStats);
-		gameStats.textContent = `The word was ${answer}...`;
+		gameStats.innerHTML = `The word was <span class="answer failed">${answer}</span>...`;
 	}
 	mystery.classList.add("game-over");
 	keyboard.classList.add("game-over");

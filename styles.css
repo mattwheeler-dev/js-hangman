@@ -5,6 +5,8 @@
 :root {
 	--primary: #fff;
 	--secondary: #111;
+	--correct: #00b700;
+	--failed: #f90303;
 	--border: 2px solid var(--primary);
 	--radius: 0.25rem;
 }
@@ -24,12 +26,21 @@ body {
 	overflow: clip;
 }
 
+section,
+article {
+	max-width: 900px;
+}
+
 /* headings */
 h1,
 h2,
 h3 {
 	text-align: center;
 	margin: 1rem auto;
+}
+
+h3 {
+	font-weight: 300;
 }
 
 /* toggle display of rules, winner, and loser */
@@ -118,6 +129,7 @@ li {
 	margin: 0.4rem;
 	font-size: 1.2rem;
 	text-transform: uppercase;
+	color: #000;
 	background-color: #fff;
 	border: var(--border);
 	border-radius: var(--radius);
@@ -125,17 +137,30 @@ li {
 
 .key.found {
 	color: #fff;
-	background-color: #006c00;
+	background-color: var(--correct);
 }
 
 .key.failed {
 	color: #fff;
-	background-color: #a90202;
+	background-color: var(--failed);
 }
 
 #winner,
 #loser {
 	display: none;
+}
+
+.answer {
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.answer.correct {
+	color: var(--correct);
+}
+
+.answer.failed {
+	color: var(--failed);
 }
 
 footer {
