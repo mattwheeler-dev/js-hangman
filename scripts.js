@@ -2,7 +2,7 @@
 const rulesOpen = document.querySelector("#rules-btn");
 const rulesClose = document.querySelector("#rules-close");
 const rules = document.querySelector("#rules");
-const hangPieces = document.querySelectorAll(".piece");
+const hangReveal = document.querySelector("#hang-reveal");
 const mystery = document.querySelector("#mystery-word");
 const keyboard = document.querySelector("#keyboard");
 const winner = document.querySelector("#winner");
@@ -90,9 +90,9 @@ const gameOver = (str) => {
 // turn handling
 const handleTurn = (key) => {
 	const targetKey = document.querySelectorAll(`.key.${key}`)[0];
+	targetKey.disabled = true;
 	turns += 1;
 	if (solution.includes(key)) {
-		targetKey.disabled = true;
 		targetKey.classList.add("found");
 		const revealed = document.querySelectorAll(`.mystery-letter.${key}`);
 		revealed.forEach((slot) => {
@@ -100,13 +100,14 @@ const handleTurn = (key) => {
 			score += 1;
 		});
 		if (score == solution.length) {
+			hangReveal.style.backgroundImage = "url(./images/step-9.png)";
 			gameOver("win");
 		}
 	} else {
-		targetKey.disabled = true;
 		targetKey.classList.add("failed");
 		fails += 1;
-		if (fails == 7) {
+		hangReveal.style.backgroundImage = `url(./images/step-${fails}.png)`;
+		if (fails == 8) {
 			gameOver("lose");
 		}
 	}
