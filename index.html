@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="styles.css" />
 		<script src="scripts.js" defer></script>
 		<!-- font awesome -->
@@ -11,7 +12,6 @@
 			crossorigin="anonymous"
 			defer
 		></script>
-		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 		<title>Hangman</title>
 	</head>
 	<body>
@@ -27,27 +27,10 @@
 			<ul>
 				<li>Each turn you choose a letter (tap / click or use keyboard)</li>
 				<li>If that letter exists in the mystery word, it will be shown</li>
-				<li>
-					If that letter is not part of the word, then a new body part will be
-					added
-				</li>
-				<li>
-					If all body parts are added then you are officially hanged (anyone
-					else hate seeing or hearing it this way?)
-				</li>
-				<li>Tip: There are 7 body parts, so 7 fails and you lose...</li>
+				<li>If that letter is not part of the word, then that's a fail</li>
+				<li>Tip: 7 fails and you lose...</li>
 			</ul>
 		</article>
-
-		<section id="hang-reveal">
-			<div class="piece 1">piece 1</div>
-			<div class="piece 2">piece 2</div>
-			<div class="piece 3">piece 3</div>
-			<div class="piece 4">piece 4</div>
-			<div class="piece 5">piece 5</div>
-			<div class="piece 6">piece 6</div>
-			<div class="piece 7">piece 7</div>
-		</section>
 
 		<section id="mystery-word"></section>
 

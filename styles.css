@@ -18,8 +18,10 @@ body {
 
 /* headings */
 h1,
+h2,
 h3 {
 	text-align: center;
+	margin: 1rem auto;
 }
 
 /* toggle display of rules, winner, and loser */
@@ -27,6 +29,12 @@ h3 {
 #winner.active,
 #loser.active {
 	display: block;
+}
+
+/* remove keyboard and word reveal area when game over */
+#mystery-word.game-over,
+#keyboard.game-over {
+	display: none;
 }
 
 #rules-btn {
@@ -48,25 +56,11 @@ ul {
 	list-style-type: none;
 }
 
-#hang-reveal {
-	min-height: 5rem;
-	width: 70%;
-	margin: auto;
-	border: 1px solid red;
-}
-
-.piece {
-	display: none;
-}
-
-.piece.revealed {
-	display: block;
-}
-
 #mystery-word {
 	min-height: 3rem;
-	width: 80%;
+	width: 90%;
 	margin: 2rem auto;
+	padding: 1rem 0;
 	border: 1px solid orange;
 	display: flex;
 	align-items: center;
@@ -96,10 +90,11 @@ ul {
 }
 
 .key.found {
-	cursor: not-allowed;
+	background-color: green;
 }
 
 .key.failed {
+	background-color: red;
 }
 
 #winner,

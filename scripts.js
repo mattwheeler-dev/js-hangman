@@ -39,6 +39,7 @@ const letters = [
 	"z",
 ];
 let solution = [];
+let turns = 0;
 let score = 0;
 let fails = 0;
 
@@ -71,11 +72,18 @@ setSolution();
 
 // game over
 const gameOver = (str) => {
+	const gameStats = document.createElement("h3");
 	if (str == "win") {
 		winner.classList.add("active");
+		winner.appendChild(gameStats);
+		gameStats.textContent = `You guessed it in just ${turns} turns!`;
 	} else {
 		loser.classList.add("active");
+		loser.appendChild(gameStats);
+		gameStats.textContent = `The word was ${solution.join("")}...`;
 	}
+	mystery.classList.add("game-over");
+	keyboard.classList.add("game-over");
 };
 
 // turn handling
@@ -83,6 +91,7 @@ const handleTurn = (e) => {
 	const targetLetter = e.target.textContent;
 	if (solution.includes(targetLetter)) {
 		e.target.disabled = true;
+		e.target.classList.add("found");
 		const revealed = document.querySelectorAll(`.${targetLetter}`);
 		revealed.forEach((slot) => {
 			slot.textContent = targetLetter;
@@ -92,13 +101,16 @@ const handleTurn = (e) => {
 			gameOver("win");
 		}
 	} else {
+		e.target.disabled = true;
+		e.target.classList.add("failed");
 		fails += 1;
 		e.target.classList.add("failed");
 		if (fails == 7) {
 			gameOver("lose");
 		}
 	}
-	console.log(`Score: ${score} | Fails: ${fails}`);
+	turns += 1;
+	console.log(`Score: ${score} | Fails: ${fails} | Turns ${turns}`);
 };
 
 // Add on screen keyboard
