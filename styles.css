@@ -148,6 +148,7 @@ li {
 #winner,
 #loser {
 	display: none;
+	margin: 3rem auto;
 }
 
 .answer {
@@ -176,4 +177,15 @@ a {
 	text-decoration: none;
 	font-size: 1.2rem;
 	color: var(--primary);
+}
+
+@media (width >= 800px) {
+	#rules {
+		max-width: 600px;
+		left: 25%;
+	}
+
+	#mystery-word {
+		margin: 5rem auto;
+	}
 }
