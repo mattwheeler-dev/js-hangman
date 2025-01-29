@@ -38,6 +38,7 @@ const letters = [
 	"y",
 	"z",
 ];
+let guesses = [];
 let solution = [];
 let turns = 0;
 let score = 0;
@@ -61,7 +62,7 @@ const setSolution = async () => {
 		solution.forEach((letter) => {
 			const mysteryLetter = document.createElement("div");
 			mystery.appendChild(mysteryLetter);
-			mysteryLetter.classList.add("letter", `${letter}`);
+			mysteryLetter.classList.add(`mystery-letter`, `${letter}`);
 			mysteryLetter.textContent = "-";
 		});
 	} catch (error) {
@@ -87,29 +88,28 @@ const gameOver = (str) => {
 };
 
 // turn handling
-const handleTurn = (e) => {
-	const targetLetter = e.target.textContent;
-	if (solution.includes(targetLetter)) {
-		e.target.disabled = true;
-		e.target.classList.add("found");
-		const revealed = document.querySelectorAll(`.${targetLetter}`);
+const handleTurn = (key) => {
+	const targetKey = document.querySelectorAll(`.key.${key}`)[0];
+	turns += 1;
+	if (solution.includes(key)) {
+		targetKey.disabled = true;
+		targetKey.classList.add("found");
+		const revealed = document.querySelectorAll(`.mystery-letter.${key}`);
 		revealed.forEach((slot) => {
-			slot.textContent = targetLetter;
+			slot.textContent = key;
 			score += 1;
 		});
 		if (score == solution.length) {
 			gameOver("win");
 		}
 	} else {
-		e.target.disabled = true;
-		e.target.classList.add("failed");
+		targetKey.disabled = true;
+		targetKey.classList.add("failed");
 		fails += 1;
-		e.target.classList.add("failed");
 		if (fails == 7) {
 			gameOver("lose");
 		}
 	}
-	turns += 1;
 	console.log(`Score: ${score} | Fails: ${fails} | Turns ${turns}`);
 };
 
@@ -117,7 +117,19 @@ const handleTurn = (e) => {
 letters.forEach((letter) => {
 	const key = document.createElement("button");
 	keyboard.appendChild(key);
-	key.addEventListener("click", handleTurn);
-	key.classList.add("key");
+	key.addEventListener("click", (e) => {
+		guesses.push(e.target.textContent);
+		handleTurn(e.target.textContent);
+	});
+	key.classList.add(`key`, `${letter}`);
 	key.textContent = letter;
+});
+
+// Keyboard input handling
+document.addEventListener("keydown", (key) => {
+	if (guesses.includes(key.key)) {
+		return;
+	}
+	guesses.push(key.key);
+	handleTurn(key.key);
 });
