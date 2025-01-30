@@ -6,8 +6,8 @@ Rules
 
 - Guess letters by tapping, clicking, or using your keyboard
 - If the guessed letter is found, it will be revealed
-- If it is not found, that is a fail
-- If you get to 7 fails, you lose
+- If it is not found, that is a fail and a new piece of the image will be revealed
+- If you get to 8 fails, you lose
 
 Key presses and on screen keys will be disabled after each guess.
 
