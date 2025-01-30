@@ -3,7 +3,7 @@
 
 /* variables */
 :root {
-	--primary: #fff;
+	--primary: #00aaff;
 	--secondary: #111;
 	--correct: #00b700;
 	--failed: #f90303;
@@ -105,6 +105,7 @@ li {
 	width: 250px;
 	margin: auto;
 	border: var(--border);
+	border-radius: var(--radius);
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -196,7 +197,13 @@ a {
 		left: 25%;
 	}
 
+	#hang-reveal {
+		height: 300px;
+		width: 350px;
+		margin-top: 2rem;
+	}
+
 	#mystery-word {
-		margin: 5rem auto;
+		margin: 2rem auto;
 	}
 }
