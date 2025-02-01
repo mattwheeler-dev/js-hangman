@@ -2,7 +2,7 @@
 
 Hangman game built with JavaScript
 
-<img src="https://github.com/user-attachments/assets/8155835d-bd17-4260-b7be-4f87a546bdc2" alt="thumbnail of JavaScript Hangman web page" width=500 />
+<img src="https://github.com/user-attachments/assets/8155835d-bd17-4260-b7be-4f87a546bdc2" alt="thumbnail of JavaScript Hangman web page" width=250 />
 
 Rules
 
